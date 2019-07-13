@@ -1,125 +1,44 @@
 package pl.sda.travelagency;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 //@Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Trip {
 
 
-    private Destination destination;
-    private Departure departure;
+    private City destinationCity;
+    private City departureCity;
     private LocalDate departureDate;
     private LocalDate returnDate;
     private boolean promoted;
     private int duration;
     private int adultSpots;
     private int childrenSpots;
-    private double adultPrice;
-    private double childrenPrice;
+    private BigDecimal adultPrice;
+    private BigDecimal childrenPrice;
     private Alimentation alimentation;
-//    @Id
+    //    @Id
 //    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    public Trip(Destination destination, int duration, double adultPrice, Departure departure) {
-        this.destination = destination;
+    public Trip(City destinationCity, int duration, BigDecimal adultPrice, City departureCity) {
+        this.destinationCity = destinationCity;
         this.duration = duration;
         this.adultPrice = adultPrice;
-        this.departure = departure;
+        this.departureCity = departureCity;
     }
 
-    public Trip() {
-    }
 
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
-
-    public void setDeparture(Departure departure) {
-        this.departure = departure;
-    }
-
-    public void setDepartureDate(LocalDate departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public void setReturnDate(LocalDate returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public void setPromoted(boolean promoted) {
-        this.promoted = promoted;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public void setAdultSpots(int adultSpots) {
-        this.adultSpots = adultSpots;
-    }
-
-    public void setChildrenSpots(int childrenSpots) {
-        this.childrenSpots = childrenSpots;
-    }
-
-    public void setAdultPrice(double adultPrice) {
-        this.adultPrice = adultPrice;
-    }
-
-    public void setChildrenPrice(double childrenPrice) {
-        this.childrenPrice = childrenPrice;
-    }
-
-    public void setAlimentation(Alimentation alimentation) {
-        this.alimentation = alimentation;
-    }
-
-    public Destination getDestination() {
-        return destination;
-    }
-
-    public Departure getDeparture() {
-        return departure;
-    }
-
-    public LocalDate getDepartureDate() {
-        return departureDate;
-    }
-
-    public LocalDate getReturnDate() {
-        return returnDate;
-    }
-
-    public boolean isPromoted() {
-        return promoted;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public int getAdultSpots() {
-        return adultSpots;
-    }
-
-    public int getChildrenSpots() {
-        return childrenSpots;
-    }
-
-    public double getAdultPrice() {
-        return adultPrice;
-    }
-
-    public double getChildrenPrice() {
-        return childrenPrice;
-    }
-
-    public Alimentation getAlimentation() {
-        return alimentation;
-    }
 }

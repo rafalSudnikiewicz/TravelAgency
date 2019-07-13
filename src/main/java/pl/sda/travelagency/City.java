@@ -1,41 +1,20 @@
 package pl.sda.travelagency;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 
 //@Entity
-public class City {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class City extends BaseEntity {
     private String name;
-    private Country country;
-    private Airport airport;
 
-    public City() {
-    }
 
-    public City(String name) {
-        this.name = name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public void setAirport(Airport airport) {
-        this.airport = airport;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public Airport getAirport() {
-        return airport;
-    }
 }

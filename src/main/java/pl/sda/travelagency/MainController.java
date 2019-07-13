@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MainController {
     private List<Trip> trips = new ArrayList<>();
 
 
-    @GetMapping("/")
+    @GetMapping("/trips")
     public ModelAndView getMain() {
         ModelAndView m = new ModelAndView();
         m.setViewName("index");
@@ -38,8 +39,8 @@ public class MainController {
     public void initTrip() {
         if (trips.size() < 10) {
             for (int i = 1; i <= 10; i++) {
-                trips.add(new Trip(new Destination(new City("city" + i)), i,
-                        i * 155.5, new Departure(new City("departure" + i))));
+                trips.add(new Trip(new City("city" + i), i,
+                        BigDecimal.valueOf(i * 155.5), new City("departure" + i)));
                 if (i % 2 == 0) {
                     trips.get(i - 1).setPromoted(true);
                 }
