@@ -11,6 +11,9 @@ import java.util.List;
 public class TripService {
 
     @Autowired
+    private CityRepo cityRepo;
+
+    @Autowired
     private TripRepo tripRepo;
 
     @Autowired
@@ -18,11 +21,11 @@ public class TripService {
 
     public void createNewTripBasicInfo(String destinationCity, int duration,
                                        BigDecimal adultPrice, String departureCity, boolean promoted) {
-        Trip trip = new Trip(destinationCity,duration,adultPrice,departureCity,promoted);
-//        trip.setDestinationCity(destinationCity);
-//        trip.setDuration(duration);
-//        trip.setAdultPrice(adultPrice);
-//        trip.setDepartureCity(departureCity);
+        City destination = new City(destinationCity);
+        City departure = new City(departureCity);
+        cityRepo.save(destination);
+        cityRepo.save(departure);
+        Trip trip = new Trip(destination, duration, adultPrice, departure, promoted);
         tripRepo.save(trip);
     }
 
@@ -39,11 +42,9 @@ public class TripService {
         return tripRepo.findAll();
     }
 
-    public void deleteTripById(Long id){
+    public void deleteTripById(Long id) {
         tripRepo.delete(this.findTrip(id));
     }
-
-
 
 
 }

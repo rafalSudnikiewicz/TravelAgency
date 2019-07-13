@@ -9,7 +9,8 @@ import java.util.Optional;
 @Service
 public class TripToTripDTOBuilder {
 
-
+    @Autowired
+    private CityRepo cityRepo;
 
     public TripDTO buildDTO(Trip trip) {
 
@@ -23,10 +24,8 @@ public class TripToTripDTOBuilder {
                 .duration(trip.getDuration())
                 .promoted(trip.isPromoted())
                 .returnDate(trip.getReturnDate().toString())
-                .destinationCity(trip.getDestinationCity())
-                .departureCity(trip.getDepartureCity())
-//                .departureCityId(Optional.ofNullable(trip.getDepartureCity()).map(c->c.getId()).orElse(null))
-//                .destinationCityId(Optional.ofNullable(trip.getDestinationCity()).map(c->c.getId()).orElse(null))
+                .departureCityId(Optional.ofNullable(trip.getDepartureCity()).map(c->c.getId()).orElse(null))
+                .destinationCityId(Optional.ofNullable(trip.getDestinationCity()).map(c->c.getId()).orElse(null))
                 .build();
 
     }
@@ -43,10 +42,8 @@ public class TripToTripDTOBuilder {
         trip.setChildrenSpots(tripDTO.getChildrenSpots());
         trip.setDepartureDate(LocalDate.parse(tripDTO.getDepartureDate()));
         trip.setReturnDate(LocalDate.parse(tripDTO.getReturnDate()));
-        trip.setDepartureCity(tripDTO.getDepartureCity());
-        trip.setDestinationCity(trip.getDestinationCity());
-//        trip.setDepartureCity(Optional.ofNullable(tripDTO.getDepartureCityId()).map(cityRepo::getOne).orElse(null));
-//        trip.setDestinationCity(Optional.ofNullable(tripDTO.getDestinationCityId()).map(cityRepo::getOne).orElse(null));
+        trip.setDepartureCity(Optional.ofNullable(tripDTO.getDepartureCityId()).map(cityRepo::getOne).orElse(null));
+        trip.setDestinationCity(Optional.ofNullable(tripDTO.getDestinationCityId()).map(cityRepo::getOne).orElse(null));
 
 
         return trip;

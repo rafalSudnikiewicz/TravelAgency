@@ -3,9 +3,6 @@ package pl.sda.travelagency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
@@ -15,7 +12,6 @@ import java.util.List;
 @Controller
 public class TripController {
 
-    private List<Trip> trips = new ArrayList<>();
     private int counter;
 
     @Autowired
@@ -43,9 +39,8 @@ public class TripController {
     public void initTrip() {
         if (counter < 1) {
             for (int i = 1; i <= 10; i++) {
-                tripService.createNewTripBasicInfo("city" + i+10, i,
+                tripService.createNewTripBasicInfo("city" + i, i,
                         BigDecimal.valueOf(i * 155.5), "departure" + i, i % 2 == 0);
-
             }
             counter++;
         }

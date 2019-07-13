@@ -14,10 +14,8 @@ import java.util.Optional;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TripDTO {
-    //    private Long destinationCityId;
-//    private Long departureCityId;
-    private String departureCity;
-    private String destinationCity;
+    private Long destinationCityId;
+    private Long departureCityId;
     private String departureDate;
     private String returnDate;
     private boolean promoted;

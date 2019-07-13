@@ -14,11 +14,17 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Trip extends BaseEntity{
+
+public class Trip extends BaseEntity {
 
 
-    private String destinationCity;
-    private String departureCity;
+    @ManyToOne
+    @JoinColumn(name = "destination_city")
+    private City destinationCity;
+    @ManyToOne
+    @JoinColumn(name = "departure_city")
+    private City departureCity;
+
     private LocalDate departureDate;
     private LocalDate returnDate;
     private boolean promoted;
@@ -29,11 +35,8 @@ public class Trip extends BaseEntity{
     private BigDecimal childrenPrice;
     @Enumerated(EnumType.STRING)
     private Alimentation alimentation;
-    //    @Id
-//    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Long id;
 
-    public Trip(String destinationCity, int duration, BigDecimal adultPrice, String departureCity, boolean promoted) {
+    public Trip(City destinationCity, int duration, BigDecimal adultPrice, City departureCity, boolean promoted) {
         this.destinationCity = destinationCity;
         this.duration = duration;
         this.adultPrice = adultPrice;
