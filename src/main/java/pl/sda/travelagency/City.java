@@ -14,7 +14,4 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 public class City extends BaseEntity {
     private String name;
-
-
-
 }

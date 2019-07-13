@@ -28,8 +28,8 @@
                 </tr>
                 <tr th:each="trip,iterationStatus  : ${trips}" and th:if ="${trip.isPromoted()}">
                     <td th:text="${iterationStatus.count}">1</td>
-                    <td th:text="${trip.getDepartureCity().getName()}">Name</td>
-                    <td th:text="${trip.getDestinationCity().getName()}">Name</td>
+                    <td th:text="${trip.getDepartureCity()}">Name</td>
+                    <td th:text="${trip.getDestinationCity()}">Name</td>
                     <td th:text="${trip.getDuration()}">Name</td>
                     <td th:text="${trip.getAdultPrice()}">Name</td>
                     <td th:text="${trip.isPromoted()}">Name</td>
