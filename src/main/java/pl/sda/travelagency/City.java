@@ -7,14 +7,11 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 
-//@Entity
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class City extends BaseEntity {
     private String name;
-
-
-
 }
