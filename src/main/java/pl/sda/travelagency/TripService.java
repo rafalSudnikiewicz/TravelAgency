@@ -29,6 +29,18 @@ public class TripService {
         tripRepo.save(trip);
     }
 
+    public void createNewTripFromDTO(AddTripDTO tripDTO) {
+        Trip trip = new Trip();
+        trip.setDestinationCity(cityRepo.getOne(tripDTO.getDestinationCityId()));
+        trip.setDepartureCity(cityRepo.getOne(tripDTO.getDepartureCityId()));
+        trip.setDuration(tripDTO.getDuration());
+        trip.setAdultPrice(tripDTO.getAdultPrice());
+        trip.setPromoted(tripDTO.isPromoted());
+
+        tripRepo.save(trip);
+    }
+
+
     public void updateTrip(TripDTO tripDTO) {
         Trip trip = tripToTripDTOBuilder.buildEntity(tripDTO);
         tripRepo.save(trip);
@@ -40,6 +52,10 @@ public class TripService {
 
     public List<Trip> findAllTrip() {
         return tripRepo.findAll();
+    }
+
+    public List<City> getCities() {
+        return cityRepo.findAll();
     }
 
     public void deleteTripById(Long id) {
