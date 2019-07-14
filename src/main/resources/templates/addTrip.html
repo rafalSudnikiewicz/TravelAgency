@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <title>Add trip</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<!--    <th:block th:replace="fragments/header :: header-css"/>-->
+<!--    <link rel="stylesheet" th:href="@{/css/signin.css}"/>-->
+</head>
+<body>
+<!--<div th:replace="fragments/header :: header"></div>-->
+<form th:action="@{/admin/addtrip}" th:object="${tripDTOdata}" method="post" class="form-signin">
+
+
+<!--    <label for="name">Imię:</label>-->
+
+<!--    <input id="name" type="text" th:field="*{destinationCityId}"  autofocus class="form-control"/>-->
+<!--    <div class="error" th:errors="*{destinationCityId}"></div>-->
+
+<!--    <label for="surname">Nazwisko:</label>-->
+<!--    <input id="surname" type="text" th:field="*{departureCityId}" autofocus class="form-control"/>-->
+<!--    <div class="error" th:errors="*{departureCityId}"></div>-->
+
+<!--    <label for="departureDate">departure date:</label>-->
+<!--    <input id="departureDate" type="text" th:field="*{departureDate}"  autofocus class="form-control"/>-->
+<!--    <div class="error" th:errors="*{departureDate}"></div>-->
+
+<!--    <label for="returnDate">return date:</label>-->
+<!--    <input id="returnDate" type="text" th:field="*{returnDate}"  autofocus class="form-control"/>-->
+<!--    <div class="error" th:errors="*{returnDate}"></div>-->
+
+    <label for="duration">Duration:</label>
+    <input id="duration" type="number" th:field="*{duration}"  autofocus class="form-control"/>
+    <span class="error" th:errors="*{duration}"></span><br>
+
+     <label for="adultPrice">Adultprice</label>
+    <input id="adultPrice" type="number" th:field="*{adultPrice}"  autofocus class="form-control"/>
+    <span class="error" th:errors="*{adultPrice}"></span><br>
+
+
+
+
+    <label for="destination">City destination:</label>
+    <select autofocus class="form-control" id="destination" th:field="*{destinationCityId}">
+        <option th:value="''" th:text="Select"></option>
+        <option th:each="city : ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
+    </select>
+    <span class="error" th:errors="*{destinationCityId}"></span>
+    <br>
+
+    <label for="departure">City departure:</label>
+    <select autofocus class="form-control" id="departure" th:field="*{departureCityId}">
+        <option th:value="''" th:text="Select"></option>
+        <option th:each="city : ${cities}" th:value="${city.getId()}" th:text="${city.getName()}"></option>
+    </select>
+    <span class="error" th:errors="*{departureCityId}"></span>
+    <br>
+
+
+    <label for="departure">Promoted:</label>
+    <input id="promoted" type="checkbox" th:field="*{promoted}"/><br>
+
+
+<!--    <label for="start">Start date:</label>-->
+
+<!--    <input type="date" id="start" name="trip-start" th:field="*{departureDate}"-->
+<!--           value="2018-07-22">-->
+<!--    -->
+<!--    <label for="end">End date:</label>-->
+<!--    <input type="date" id="end" name="trip-end"  th:field="*{}"-->
+<!--           value="2018-07-22">-->
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register trip</button>
+
+<!--    <div th:replace="fragments/footer :: footer"></div>-->
+</form>
+
+
+</body>
+</html>
