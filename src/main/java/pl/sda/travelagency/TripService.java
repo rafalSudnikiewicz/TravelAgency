@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @Service
 public class TripService {
@@ -31,12 +35,17 @@ public class TripService {
 
     public void createNewTripFromDTO(AddTripDTO tripDTO) {
         Trip trip = new Trip();
+        LocalDate departureDate=LocalDate.parse(tripDTO.getDepartureDate());
+        LocalDate returnDate=LocalDate.parse(tripDTO.getReturnDate());
+
         trip.setDestinationCity(cityRepo.getOne(tripDTO.getDestinationCityId()));
         trip.setDepartureCity(cityRepo.getOne(tripDTO.getDepartureCityId()));
-        trip.setDuration(tripDTO.getDuration());
+        int noOfDaysBetween = (int) DAYS.between(departureDate, returnDate);
+        trip.setDuration(noOfDaysBetween);
         trip.setAdultPrice(tripDTO.getAdultPrice());
         trip.setPromoted(tripDTO.isPromoted());
-
+        trip.setDepartureDate(departureDate);
+        trip.setReturnDate(returnDate);
         tripRepo.save(trip);
     }
 

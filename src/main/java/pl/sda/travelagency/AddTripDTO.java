@@ -23,13 +23,13 @@ public class AddTripDTO {
   //  @Pattern(regexp = "^[1-9]", message = "accepted decimal number")
     @Digits(integer=6, fraction=2, message = "value must be a number!")
     private BigDecimal adultPrice;
-    @Digits(integer=6, fraction=0, message = "value must be integer number !")
-    @NotNull (message = "can't be empty!")
-//    @Pattern(regexp = "^[1-9]", message = "accepted decimal number")
-    private Integer duration;
+//    @Digits(integer=6, fraction=0, message = "value must be integer number !")
+//    @NotNull (message = "can't be empty!")
+////    @Pattern(regexp = "^[1-9]", message = "accepted decimal number")
+//    private Integer duration;
     private boolean promoted;
-//        private String departureDate;
-//        private String returnDate;
+        private String departureDate;
+        private String returnDate;
 //    private Integer adultSpots;
 //    private Integer childrenSpots;
 //    private BigDecimal childrenPrice;

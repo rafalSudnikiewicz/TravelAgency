@@ -25,6 +25,8 @@
                     <th>duration</th>
                     <th>price</th>
                     <th>isPromoted</th>
+                    <th>departure</th>
+                    <th>return</th>
                 </tr>
                 <tr th:each="trip,iterationStatus  : ${trips}">
                     <td th:text="${iterationStatus.count}">1</td>
@@ -33,6 +35,8 @@
                     <td th:text="${trip.getDuration()}">Name</td>
                     <td th:text="${trip.getAdultPrice()}">Name</td>
                     <td th:text="${trip.isPromoted()}">Name</td>
+                    <td th:text="${trip.getDepartureDate()}">Name</td>
+                    <td th:text="${trip.getReturnDate()}">Name</td>
 
 
                 </tr>

@@ -42,6 +42,8 @@ public class Trip extends BaseEntity {
         this.adultPrice = adultPrice;
         this.departureCity = departureCity;
         this.promoted = promoted;
+        this.departureDate=LocalDate.now();
+        this.returnDate=LocalDate.now();
     }
 
 
